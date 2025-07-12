@@ -3,8 +3,7 @@
 
 This repository contains material associated to this [paper](#Citation).
 
-It contains:
-- code for performing three different strategies for hierarchical text classification on our dataset
+It contains: code for performing three different strategies for hierarchical text classification on our dataset
 
 If you use this material, we would appreciate if you could cite the following reference.
 
