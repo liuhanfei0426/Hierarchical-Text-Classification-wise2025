@@ -4,6 +4,30 @@ from torch.utils.data import Dataset, DataLoader
 import pandas as pd
 import numpy as np
 
+# 定义各种训练策略
+model_origin_list = ['huggingface', 'pt']
+save_base_list = ['best_loss', 'best_f1']
+loss_list = ['MSE', 'BCELoss', 'MultiLabelSoftMarginLoss']
+learning_rate_list = [5e-6, 1e-5, 2e-5, 1e-5]
+logit_list = [0.2, 0.5]
+
+model_origin = model_origin_list[0]
+save_base = save_base_list[0]
+# loss_select = loss_list[1]
+child_loss_select = loss_list[1]
+parent_loss_select = loss_list[1]
+backbone_frozen = False     # True
+learning_rate = learning_rate_list[0]
+logit = logit_list[0]
+
+label_num = 23
+num_epochs = 10  # 训练轮数
+patience = 100  # 早停策略的耐心值，即多少个 epoch 没有改进后停止
+train_batch_size = 32
+
+weight_child = 0.7
+weight_parent = 0.3
+
 # 计算模型总体评估指标
 def calculate_metrics(true_labels, predictions):
     precision_micro, recall_micro, f1_micro, _ = precision_recall_fscore_support(true_labels, predictions, average='micro')
